@@ -89,28 +89,12 @@ function App() {
     await updateProposals();
   }
 
-  async function withdraw(e) {
-    e.preventDefault();
-    const amount = e.target.elements[0].value;
-    const to = e.target.elements[1].value;
-    await contract.methods
-      .withdrawEther(amount, to)
-      .send({ from: accounts[0] });
-  }
-
   async function contribute(e) {
     e.preventDefault();
     const amount = e.target.elements[0].value;
     await contract.methods
       .contribute()
       .send({ from: accounts[0], value: amount });
-    await updateStakes();
-  }
-
-  async function redeemStakes(e) {
-    e.preventDefault();
-    const amount = e.target.elements[0].value;
-    await contract.methods.redeemStake(amount).send({ from: accounts[0] });
     await updateStakes();
   }
 
