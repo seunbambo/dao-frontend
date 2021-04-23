@@ -59,7 +59,7 @@ function App() {
       updateStakes();
       updateProposals();
     }
-  }, [accounts, contract, web3, admin]);
+  }, [accounts, contract, web3, admin, isReady, updateProposals, updateStakes]);
 
   async function updateStakes() {
     const stakes = await contract.methods.stakes(accounts[0]).call();
